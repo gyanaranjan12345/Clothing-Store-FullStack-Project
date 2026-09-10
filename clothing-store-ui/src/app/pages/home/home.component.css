@@ -1,0 +1,155 @@
+.hero {
+  min-height: 600px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 60px;
+
+  position: relative;
+
+  background-position: center;
+  background-size: cover;
+  transition: background-image 900ms ease-in-out;
+
+  color: white;
+}
+
+.hero::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(10, 10, 10, 0.78),
+    rgba(10, 10, 10, 0.18) 70%,
+    rgba(10, 10, 10, 0.28)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+
+  max-width: 600px;
+}
+
+.hero-controls {
+  position: absolute;
+  z-index: 1;
+  right: 60px;
+  bottom: 42px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-arrow,
+.hero-dot {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.32);
+  color: white;
+  cursor: pointer;
+}
+
+.hero-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.hero-arrow:hover,
+.hero-arrow:focus-visible {
+  background: white;
+  color: #111;
+}
+
+.hero-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.hero-dot.active {
+  background: white;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.category-card {
+  display: block;
+
+  text-align: center;
+
+  padding: 50px 20px;
+
+  background: #f7f7f7;
+
+  color: #111;
+
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  transition: 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  background: #eeeeee;
+}
+
+.category-card div {
+  font-size: 70px;
+}
+
+.category-card h4 {
+  margin-top: 20px;
+}
+
+.features {
+  padding: 60px 0;
+
+  background: #f7f7f7;
+}
+
+.feature {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 560px;
+    padding: 36px 24px;
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+  }
+
+  .hero-controls {
+    right: 24px;
+    bottom: 24px;
+  }
+}

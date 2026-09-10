@@ -1,0 +1,182 @@
+<div
+  class="container product-details"
+  *ngIf="product"
+>
+
+  <div class="row">
+
+    <!-- IMAGE -->
+
+    <div class="col-md-6">
+
+      <div class="main-image">
+
+        <img
+          [src]="product.imageUrl"
+          [alt]="product.name"
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- DETAILS -->
+
+    <div class="col-md-6">
+
+      <small class="text-muted">
+
+        {{ product.categoryName }}
+
+      </small>
+
+      <h1 class="product-title">
+
+        {{ product.name }}
+
+      </h1>
+
+      <h2 class="product-price">
+
+        ₹{{ product.price }}
+
+      </h2>
+
+      <hr>
+
+      <p class="description">
+
+        {{ product.description }}
+
+      </p>
+
+
+      <!-- SIZE -->
+
+      <div class="mb-4">
+
+        <label class="fw-bold">
+          Size
+        </label>
+
+        <div class="size-buttons">
+
+          <button
+            *ngFor="
+              let size of
+              ['S','M','L','XL','XXL']
+            "
+            class="size-btn"
+            [class.active]="
+              selectedSize === size
+            "
+            (click)="
+              selectedSize = size
+            "
+          >
+
+            {{ size }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- COLOR -->
+
+      <div class="mb-4">
+
+        <label class="fw-bold">
+          Color:
+        </label>
+
+        {{ product.color }}
+
+      </div>
+
+
+      <!-- STOCK -->
+
+      <div class="mb-4">
+
+        <span
+          *ngIf="
+            product.stock > 0
+          "
+          class="text-success"
+        >
+          In Stock
+        </span>
+
+        <span
+          *ngIf="
+            product.stock === 0
+          "
+          class="text-danger"
+        >
+          Out of Stock
+        </span>
+
+      </div>
+
+
+      <!-- QUANTITY -->
+
+      <div class="quantity-container mb-4">
+
+        <button
+          class="quantity-btn"
+          (click)="
+            decreaseQuantity()
+          "
+        >
+          −
+        </button>
+
+        <span>
+          {{ quantity }}
+        </span>
+
+        <button
+          class="quantity-btn"
+          (click)="
+            increaseQuantity()
+          "
+        >
+          +
+        </button>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="d-flex gap-2">
+
+        <button
+          class="btn btn-dark btn-lg flex-grow-1"
+          [disabled]="
+            product.stock === 0
+          "
+          (click)="addToCart()"
+        >
+          🛒 Add to Cart
+        </button>
+
+        <button
+          class="btn btn-outline-dark btn-lg"
+          (click)="addToWishlist()"
+        >
+          ♡
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

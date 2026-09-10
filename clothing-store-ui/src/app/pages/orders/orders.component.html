@@ -1,0 +1,105 @@
+<div class="container py-5">
+
+  <h2 class="mb-4">
+    My Orders 📦
+  </h2>
+
+  <div
+    *ngIf="orders.length === 0"
+    class="text-center py-5"
+  >
+
+    <h4>
+      You haven't placed any orders yet.
+    </h4>
+
+    <a
+      routerLink="/products"
+      class="btn btn-dark mt-3"
+    >
+      Start Shopping
+    </a>
+
+  </div>
+
+
+  <div
+    class="card mb-4"
+    *ngFor="let order of orders"
+  >
+
+    <div class="card-header">
+
+      <div
+        class="d-flex
+               justify-content-between"
+      >
+
+        <strong>
+          Order #{{ order.id }}
+        </strong>
+
+        <span
+          class="badge bg-dark"
+        >
+          {{ order.orderStatus }}
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="card-body">
+
+      <p>
+        Order Date:
+        {{ order.createdAt | date }}
+      </p>
+
+      <div
+        *ngFor="
+          let item of order.items
+        "
+        class="mb-2"
+      >
+
+        {{ item.product.name }}
+
+        × {{ item.quantity }}
+
+        — ₹{{ item.subtotal }}
+
+      </div>
+
+      <hr>
+
+      <div
+        class="d-flex
+               justify-content-between"
+      >
+
+        <strong>
+          Total
+        </strong>
+
+        <strong>
+          ₹{{ order.totalAmount }}
+        </strong>
+
+      </div>
+
+      <a
+        [routerLink]="[
+          '/orders',
+          order.id
+        ]"
+        class="btn btn-outline-dark mt-3"
+      >
+        View Order
+      </a>
+
+    </div>
+
+  </div>
+
+</div>

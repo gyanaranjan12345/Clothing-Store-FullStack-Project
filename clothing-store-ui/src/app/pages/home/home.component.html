@@ -1,0 +1,214 @@
+<!-- HERO -->
+
+<section
+  class="hero"
+  [style.backgroundImage]="
+    'url(' + heroImages[activeHeroImage] + ')'
+  "
+>
+
+  <div class="hero-content">
+
+    <p>
+      NEW COLLECTION 2026
+    </p>
+
+    <h1>
+      Style That<br>
+      Speaks For You
+    </h1>
+
+    <p>
+      Discover our latest collection
+      of fashion for every occasion.
+    </p>
+
+    <a
+      routerLink="/products"
+      class="btn btn-light btn-lg"
+    >
+      Shop Now
+    </a>
+
+  </div>
+
+  <div class="hero-controls">
+    <button
+      type="button"
+      class="hero-arrow"
+      aria-label="Previous slide"
+      (click)="previousHeroImage()"
+    >
+      &#8592;
+    </button>
+
+    <div class="hero-dots" role="tablist" aria-label="Hero slides">
+      <button
+        *ngFor="let image of heroImages; let index = index"
+        type="button"
+        class="hero-dot"
+        [class.active]="activeHeroImage === index"
+        [attr.aria-label]="'Show slide ' + (index + 1)"
+        [attr.aria-selected]="activeHeroImage === index"
+        role="tab"
+        (click)="selectHeroImage(index)"
+      ></button>
+    </div>
+
+    <button
+      type="button"
+      class="hero-arrow"
+      aria-label="Next slide"
+      (click)="nextHeroImage()"
+    >
+      &#8594;
+    </button>
+  </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="container py-5">
+
+  <div class="text-center mb-5">
+
+    <h2>
+      Shop By Category
+    </h2>
+
+    <p class="text-muted">
+      Find your perfect style
+    </p>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-4 mb-4">
+
+      <a
+        routerLink="/products"
+        [queryParams]="{ category: 'Men' }"
+        class="category-card"
+      >
+
+        <div>
+          👔
+        </div>
+
+        <h4>
+          Men
+        </h4>
+
+      </a>
+
+    </div>
+
+    <div class="col-md-4 mb-4">
+
+      <a
+        routerLink="/products"
+        [queryParams]="{ category: 'Women' }"
+        class="category-card"
+      >
+
+        <div>
+          👗
+        </div>
+
+        <h4>
+          Women
+        </h4>
+
+      </a>
+
+    </div>
+
+    <div class="col-md-4 mb-4">
+
+      <a
+        routerLink="/products"
+        [queryParams]="{ category: 'Kids' }"
+        class="category-card"
+      >
+
+        <div>
+          👕
+        </div>
+
+        <h4>
+          Kids
+        </h4>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+  <div class="container">
+
+    <div class="row text-center">
+
+      <div class="col-md-4">
+
+        <div class="feature">
+
+          <h4>
+            🚚 Free Shipping
+          </h4>
+
+          <p>
+            Free delivery on orders above ₹999
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="feature">
+
+          <h4>
+            🔄 Easy Returns
+          </h4>
+
+          <p>
+            7-day easy return policy
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="feature">
+
+          <h4>
+            🔒 Secure Payment
+          </h4>
+
+          <p>
+            100% secure payment
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,41 @@
+.tracking {
+  display: flex;
+
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+.tracking-step {
+  flex: 1;
+
+  text-align: center;
+
+  position: relative;
+}
+
+.circle {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  border: 2px solid #ccc;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: auto auto 10px;
+}
+
+.tracking-step.completed
+.circle {
+  background: #111;
+
+  color: white;
+
+  border-color: #111;
+}

@@ -1,0 +1,219 @@
+<div class="container py-5">
+
+  <h2 class="mb-4">
+    Shopping Cart 🛒
+  </h2>
+
+  <div
+    *ngIf="
+      cart &&
+      cart.items.length === 0
+    "
+    class="text-center py-5"
+  >
+
+    <h3>
+      Your cart is empty
+    </h3>
+
+    <p class="text-muted">
+      Add some products to continue shopping.
+    </p>
+
+    <a
+      routerLink="/products"
+      class="btn btn-dark"
+    >
+      Continue Shopping
+    </a>
+
+  </div>
+
+
+  <div
+    class="row"
+    *ngIf="
+      cart &&
+      cart.items.length > 0
+    "
+  >
+
+    <!-- ITEMS -->
+
+    <div class="col-lg-8">
+
+      <div
+        class="card mb-3"
+        *ngFor="
+          let item of cart.items
+        "
+      >
+
+        <div class="card-body">
+
+          <div class="row align-items-center">
+
+            <div class="col-md-2">
+
+              <img
+                [src]="item.imageUrl"
+                class="img-fluid"
+              >
+
+            </div>
+
+            <div class="col-md-3">
+
+              <h5>
+                {{ item.productName }}
+              </h5>
+
+              <small>
+                Size: {{ item.size }}
+              </small>
+
+              <br>
+
+              <small>
+                Color: {{ item.color }}
+              </small>
+
+            </div>
+
+            <div class="col-md-2">
+
+              ₹{{ item.price }}
+
+            </div>
+
+            <div class="col-md-3">
+
+              <button
+                class="btn btn-sm btn-outline-dark"
+                (click)="decrease(item)"
+              >
+                −
+              </button>
+
+              <span class="mx-3">
+                {{ item.quantity }}
+              </span>
+
+              <button
+                class="btn btn-sm btn-outline-dark"
+                (click)="increase(item)"
+              >
+                +
+              </button>
+
+            </div>
+
+            <div class="col-md-2">
+
+              <strong>
+                ₹{{ item.subtotal }}
+              </strong>
+
+              <button
+                class="btn btn-link text-danger"
+                (click)="remove(item)"
+              >
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        class="btn btn-outline-danger"
+        (click)="clearCart()"
+      >
+        Clear Cart
+      </button>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="col-lg-4">
+
+      <div class="card">
+
+        <div class="card-body">
+
+          <h4>
+            Order Summary
+          </h4>
+
+          <hr>
+
+          <div
+            class="d-flex
+                   justify-content-between"
+          >
+
+            <span>
+              Subtotal
+            </span>
+
+            <span>
+              ₹{{ cart.totalAmount }}
+            </span>
+
+          </div>
+
+          <div
+            class="d-flex
+                   justify-content-between
+                   mt-2"
+          >
+
+            <span>
+              Shipping
+            </span>
+
+            <span>
+              FREE
+            </span>
+
+          </div>
+
+          <hr>
+
+          <div
+            class="d-flex
+                   justify-content-between"
+          >
+
+            <strong>
+              Total
+            </strong>
+
+            <strong>
+              ₹{{ cart.totalAmount }}
+            </strong>
+
+          </div>
+
+          <a
+            routerLink="/checkout"
+            class="btn btn-dark w-100 mt-4"
+          >
+            Proceed to Checkout
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

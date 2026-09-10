@@ -1,0 +1,207 @@
+<nav
+  class="navbar navbar-expand-lg
+         bg-white border-bottom"
+>  <div class="container"><!-- Brand -->
+
+<a
+  class="navbar-brand fw-bold"
+  routerLink="/"
+>
+  STYLEHUB
+</a>
+
+
+<!-- Mobile Toggle -->
+
+<button
+  class="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarMenu"
+  aria-controls="navbarMenu"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+>
+
+  <span
+    class="navbar-toggler-icon"
+  ></span>
+
+</button>
+
+
+<!-- Menu -->
+
+<div
+  class="collapse navbar-collapse"
+  id="navbarMenu"
+>
+
+  <ul
+    class="navbar-nav mx-auto"
+  >
+
+    <!-- Home -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link"
+        routerLink="/"
+      >
+        Home
+      </a>
+
+    </li>
+
+
+    <!-- Shop -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link"
+        routerLink="/products"
+      >
+        Shop
+      </a>
+
+    </li>
+
+
+    <!-- Men -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link"
+        routerLink="/products"
+      >
+        Men
+      </a>
+
+    </li>
+
+
+    <!-- Women -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link"
+        routerLink="/products"
+      >
+        Women
+      </a>
+
+    </li>
+
+
+    <!-- Login -->
+
+    <li
+      class="nav-item"
+      *ngIf="!authService.isLoggedIn()"
+    >
+
+      <a
+        class="nav-link"
+        routerLink="/login"
+      >
+        Login
+      </a>
+
+    </li>
+
+
+    <!-- Register -->
+
+    <li
+      class="nav-item"
+      *ngIf="!authService.isLoggedIn()"
+    >
+
+      <a
+        class="nav-link"
+        routerLink="/register"
+      >
+        Register
+      </a>
+
+    </li>
+
+
+    <!-- My Orders -->
+
+    <li
+      class="nav-item"
+      *ngIf="authService.isLoggedIn()"
+    >
+
+      <a
+        class="nav-link"
+        routerLink="/orders"
+      >
+        My Orders
+      </a>
+
+    </li>
+
+  </ul>
+
+
+  <!-- Right Side Icons -->
+
+  <div class="d-flex gap-3 align-items-center">
+
+    <!-- Search -->
+
+    <a
+      routerLink="/products"
+      class="nav-icon text-decoration-none"
+      title="Search"
+    >
+      🔍
+    </a>
+
+
+    <!-- Wishlist -->
+
+    <a
+      routerLink="/wishlist"
+      class="nav-icon text-decoration-none"
+      title="Wishlist"
+      *ngIf="authService.isLoggedIn()"
+    >
+      ♡
+    </a>
+
+
+    <!-- Cart -->
+
+    <a
+      routerLink="/cart"
+      class="nav-icon text-decoration-none"
+      title="Cart"
+      *ngIf="authService.isLoggedIn()"
+    >
+      🛒
+    </a>
+
+
+    <!-- Logout -->
+
+    <button
+      type="button"
+      class="btn btn-outline-dark btn-sm"
+      *ngIf="authService.isLoggedIn()"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+  </div></nav>

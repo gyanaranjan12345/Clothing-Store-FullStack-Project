@@ -1,0 +1,7 @@
+.container {
+  max-width: 1100px;
+}
+
+.card {
+  overflow: hidden;
+}

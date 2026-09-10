@@ -1,0 +1,144 @@
+<div class="container-fluid mt-4">
+
+  <div
+    class="d-flex justify-content-between
+           align-items-center mb-4"
+  >
+
+    <h2>
+      Manage Products
+    </h2>
+
+    <a
+      routerLink="/admin/products/new"
+      class="btn btn-dark"
+    >
+      <i class="bi bi-plus-lg"></i>
+      Add Product
+    </a>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card-body">
+
+      <div class="table-responsive">
+
+        <table
+          class="table table-hover align-middle"
+        >
+
+          <thead>
+
+            <tr>
+
+              <th>ID</th>
+
+              <th>Image</th>
+
+              <th>Name</th>
+
+              <th>Price</th>
+
+              <th>Stock</th>
+
+              <th>Size</th>
+
+              <th>Color</th>
+
+              <th>Actions</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr
+              *ngFor="
+                let product of products
+              "
+            >
+
+              <td>
+                {{ product.id }}
+              </td>
+
+              <td>
+
+                <img
+                  [src]="product.imageUrl"
+                  width="60"
+                  height="70"
+                  style="object-fit:cover"
+                >
+
+              </td>
+
+              <td>
+                {{ product.name }}
+              </td>
+
+              <td>
+                ₹{{ product.price }}
+              </td>
+
+              <td>
+
+                <span
+                  [class.text-danger]="
+                    product.stock < 5
+                  "
+                >
+                  {{ product.stock }}
+                </span>
+
+              </td>
+
+              <td>
+                {{ product.size }}
+              </td>
+
+              <td>
+                {{ product.color }}
+              </td>
+
+              <td>
+
+                <a
+                  [routerLink]="[
+                    '/admin/products/edit',
+                    product.id
+                  ]"
+                  class="btn btn-sm
+                         btn-outline-primary me-2"
+                >
+                  Edit
+                </a>
+
+                <button
+                  class="btn btn-sm
+                         btn-outline-danger"
+                  (click)="
+                    deleteProduct(product.id)
+                  "
+                >
+                  Delete
+                </button>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

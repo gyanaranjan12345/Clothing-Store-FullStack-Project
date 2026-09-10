@@ -1,0 +1,362 @@
+<div class="container-fluid products-page">
+
+  <div class="row">
+
+    <!-- FILTER SIDEBAR -->
+
+    <div class="col-lg-3">
+
+      <div class="filter-card">
+
+        <h4>
+          Filters
+        </h4>
+
+        <hr>
+
+        <!-- Search -->
+
+        <label>
+          Search
+        </label>
+
+        <div class="input-group mb-4">
+
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search products..."
+            [(ngModel)]="keyword"
+            (keyup.enter)="search()"
+          >
+
+          <button
+            class="btn btn-dark"
+            (click)="search()"
+          >
+            Search
+          </button>
+
+        </div>
+
+        <!-- Category -->
+
+        <label>
+          Category
+        </label>
+
+        <select
+          class="form-select mb-4"
+          [(ngModel)]="
+            selectedCategory
+          "
+          (change)="search()"
+        >
+
+          <option
+            [ngValue]="undefined"
+          >
+            All Categories
+          </option>
+
+          <option
+            *ngFor="
+              let category of categories
+            "
+            [ngValue]="category.id"
+          >
+
+            {{ category.name }}
+
+          </option>
+
+        </select>
+
+        <!-- Price -->
+
+        <label>
+          Price
+        </label>
+
+        <div class="row mb-4">
+
+          <div class="col">
+
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Min"
+              [(ngModel)]="minPrice"
+            >
+
+          </div>
+
+          <div class="col">
+
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Max"
+              [(ngModel)]="maxPrice"
+            >
+
+          </div>
+
+        </div>
+
+        <!-- Size -->
+
+        <label>
+          Size
+        </label>
+
+        <select
+          class="form-select mb-4"
+          [(ngModel)]="selectedSize"
+        >
+
+          <option value="">
+            All Sizes
+          </option>
+
+          <option value="S">
+            S
+          </option>
+
+          <option value="M">
+            M
+          </option>
+
+          <option value="L">
+            L
+          </option>
+
+          <option value="XL">
+            XL
+          </option>
+
+          <option value="XXL">
+            XXL
+          </option>
+
+        </select>
+
+        <!-- Color -->
+
+        <label>
+          Color
+        </label>
+
+        <select
+          class="form-select mb-4"
+          [(ngModel)]="selectedColor"
+        >
+
+          <option value="">
+            All Colors
+          </option>
+
+          <option value="Black">
+            Black
+          </option>
+
+          <option value="White">
+            White
+          </option>
+
+          <option value="Blue">
+            Blue
+          </option>
+
+          <option value="Red">
+            Red
+          </option>
+
+          <option value="Green">
+            Green
+          </option>
+
+        </select>
+
+        <button
+          class="btn btn-dark w-100 mb-2"
+          (click)="search()"
+        >
+          Apply Filters
+        </button>
+
+        <button
+          class="btn btn-outline-secondary w-100"
+          (click)="clearFilters()"
+        >
+          Clear Filters
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="col-lg-9">
+
+      <div
+        class="d-flex
+               justify-content-between
+               align-items-center
+               mb-4"
+      >
+
+        <div>
+
+          <h2>
+            Clothing Collection
+          </h2>
+
+          <p class="text-muted">
+            {{ products.length }}
+            products found
+          </p>
+
+        </div>
+
+        <select
+          class="form-select sort-select"
+          [(ngModel)]="sort"
+          (change)="search()"
+        >
+
+          <option value="">
+            Sort By
+          </option>
+
+          <option value="priceAsc">
+            Price: Low to High
+          </option>
+
+          <option value="priceDesc">
+            Price: High to Low
+          </option>
+
+          <option value="newest">
+            Newest
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- LOADING -->
+
+      <div
+        *ngIf="loading"
+        class="text-center p-5"
+      >
+
+        <div
+          class="spinner-border"
+        ></div>
+
+        <p class="mt-3">
+          Loading products...
+        </p>
+
+      </div>
+
+
+      <!-- PRODUCT GRID -->
+
+      <div
+        class="row"
+        *ngIf="!loading"
+      >
+
+        <div
+          class="col-xl-3
+                 col-lg-4
+                 col-md-6
+                 mb-4"
+          *ngFor="
+            let product of products
+          "
+        >
+
+          <div class="product-card">
+
+            <div class="image-container">
+
+              <img
+                [src]="product.imageUrl"
+                [alt]="product.name"
+              >
+
+              <button
+                class="wishlist-btn"
+              >
+                ♡
+              </button>
+
+            </div>
+
+            <div class="product-info">
+
+              <small
+                class="text-muted"
+              >
+                {{ product.categoryName }}
+              </small>
+
+              <h5>
+                {{ product.name }}
+              </h5>
+
+              <p class="price">
+                ₹{{ product.price }}
+              </p>
+
+              <a
+                [routerLink]="[
+                  '/products',
+                  product.id
+                ]"
+                class="btn btn-dark w-100"
+              >
+                View Product
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- NO PRODUCTS -->
+
+      <div
+        *ngIf="
+          !loading &&
+          products.length === 0
+        "
+        class="text-center p-5"
+      >
+
+        <h4>
+          No products found
+        </h4>
+
+        <p class="text-muted">
+          Try changing your filters.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

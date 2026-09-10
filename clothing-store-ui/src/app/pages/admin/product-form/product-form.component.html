@@ -1,0 +1,193 @@
+<div class="container mt-4">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-8">
+
+      <div class="card shadow">
+
+        <div class="card-body">
+
+          <h2 class="mb-4">
+
+            {{
+              isEdit
+                ? 'Edit Product'
+                : 'Add Product'
+            }}
+
+          </h2>
+
+          <form
+            (ngSubmit)="saveProduct()"
+          >
+
+            <div class="mb-3">
+
+              <label>
+                Product Name
+              </label>
+
+              <input
+                class="form-control"
+                [(ngModel)]="product.name"
+                name="name"
+                required
+              >
+
+            </div>
+
+            <div class="mb-3">
+
+              <label>
+                Description
+              </label>
+
+              <textarea
+                class="form-control"
+                rows="4"
+                [(ngModel)]="
+                  product.description
+                "
+                name="description"
+              ></textarea>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+
+                <label>
+                  Price
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="product.price"
+                  name="price"
+                  required
+                >
+
+              </div>
+
+              <div class="col-md-6">
+
+                <label>
+                  Stock
+                </label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="product.stock"
+                  name="stock"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+            <div class="row mt-3">
+
+              <div class="col-md-6">
+
+                <label>
+                  Size
+                </label>
+
+                <select
+                  class="form-select"
+                  [(ngModel)]="product.size"
+                  name="size"
+                >
+
+                  <option value="">
+                    Select Size
+                  </option>
+
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                  <option>XXL</option>
+
+                </select>
+
+              </div>
+
+              <div class="col-md-6">
+
+                <label>
+                  Color
+                </label>
+
+                <input
+                  class="form-control"
+                  [(ngModel)]="product.color"
+                  name="color"
+                >
+
+              </div>
+
+            </div>
+
+            <div class="mb-3 mt-3">
+
+              <label>
+                Image URL
+              </label>
+
+              <input
+                class="form-control"
+                [(ngModel)]="
+                  product.imageUrl
+                "
+                name="imageUrl"
+              >
+
+            </div>
+
+            <div class="mb-3">
+
+              <label>
+                Category ID
+              </label>
+
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="
+                  product.categoryId
+                "
+                name="categoryId"
+              >
+
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-dark"
+            >
+
+              {{
+                isEdit
+                  ? 'Update Product'
+                  : 'Create Product'
+              }}
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

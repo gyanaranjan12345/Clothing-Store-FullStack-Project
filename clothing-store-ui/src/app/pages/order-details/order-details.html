@@ -1,0 +1,80 @@
+<div
+  class="container py-5"
+  *ngIf="order"
+>
+
+  <h2>
+    Order #{{ order.id }}
+  </h2>
+
+  <p class="text-muted">
+    {{ order.createdAt | date }}
+  </p>
+
+  <div class="card mt-4">
+
+    <div class="card-body">
+
+      <h4>
+        Order Tracking
+      </h4>
+
+      <div
+        class="tracking"
+        *ngFor="
+          let status of statuses;
+          let i = index
+        "
+      >
+
+        <div
+          class="tracking-step"
+          [class.completed]="
+            isCompleted(status)
+          "
+        >
+
+          <div class="circle">
+
+            {{
+              isCompleted(status)
+                ? '✓'
+                : i + 1
+            }}
+
+          </div>
+
+          <div>
+
+            <strong>
+              {{ status }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card mt-4">
+
+    <div class="card-body">
+
+      <h4>
+        Delivery Address
+      </h4>
+
+      <p>
+        {{ order.shippingAddress }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
