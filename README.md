@@ -121,23 +121,23 @@ Clothing-Store-FullStack-Project
 
 
     ┌─────────────────────┐
-    │   Angular Frontend      │
-    │ clothing-store-ui       │
+    │   Angular Frontend  │
+    │ clothing-store-ui   │
     └──────────┬──────────┘
-                 │
-                 │ REST APIs
-                 ▼
+               │
+               │ REST APIs
+               ▼
     ┌─────────────────────┐
     │    Spring Boot      │
     │      Backend        │
     └──────────┬──────────┘
-                 │
+               │
     ┌──────────▼──────────┐
     │   Spring Data JPA   │
     │      Hibernate      │
     └──────────┬──────────┘
-                 │
-                 ▼
+               │
+               ▼
     ┌─────────────────────┐
     │       MySQL         │
     └─────────────────────┘
