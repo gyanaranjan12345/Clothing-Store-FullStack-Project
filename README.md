@@ -62,75 +62,82 @@ Clothing-Store-FullStack-Project
 
 
 ✨ Features
+
 👤 User Management
-User registration
-User login
-JWT-based authentication
-Secure password handling
-Role-based authorization
+   User registration
+   User login
+   JWT-based authentication
+   Secure password handling
+   Role-based authorization
+
 🛍️ Product Management
-Add products
-Update products
-Delete products
-View product details
-Product listing
-Product search
-Category-based products
-Stock management
+   Add products
+   Update products
+   Delete products
+   View product details
+   Product listing
+   Product search
+   Category-based products
+   Stock management
+
 🛒 Shopping Cart
-Add products to cart
-Update quantity
-Remove products
-View cart
-Calculate total price
-Stock validation
+   Add products to cart
+   Update quantity
+   Remove products
+   View cart
+   Calculate total price
+   Stock validation
+
 ❤️ Wishlist
-Add products to wishlist
-Remove products from wishlist
-View wishlist
+   Add products to wishlist
+   Remove products from wishlist
+   View wishlist
+
 📦 Order Management
-Checkout
-Place orders
-Cash on Delivery
-Online payment integration placeholder
-Order history
-Order details
-Order status tracking
-Stock validation during order placement
+   Checkout
+   Place orders
+   Cash on Delivery
+   Online payment integration placeholder
+   Order history
+   Order details
+   Order status tracking
+   Stock validation during order placement
+
 🔐 Security
-Spring Security
-JWT authentication
-Protected REST APIs
-Role-based access control
+   Spring Security
+   JWT authentication
+   Protected REST APIs
+   Role-based access control
+
 ⚠️ Exception Handling
-Custom exceptions
-Global exception handling
-Proper HTTP status codes
-Validation error handling
-Standard API responses
+   Custom exceptions
+   Global exception handling
+   Proper HTTP status codes
+   Validation error handling
+   Standard API responses
 
 
-  🏗️ Architecture
+ 🏗️ Architecture
 
 
     ┌─────────────────────┐
-    │   Angular Frontend  │
-    │ clothing-store-ui   │
+    │   Angular Frontend      │
+    │ clothing-store-ui       │
     └──────────┬──────────┘
-               │
-               │ REST APIs
-               ▼
+                 │
+                 │ REST APIs
+                 ▼
     ┌─────────────────────┐
     │    Spring Boot      │
     │      Backend        │
     └──────────┬──────────┘
-               │
+                 │
     ┌──────────▼──────────┐
     │   Spring Data JPA   │
     │      Hibernate      │
     └──────────┬──────────┘
-               │
-               ▼
+                 │
+                 ▼
     ┌─────────────────────┐
     │       MySQL         │
     └─────────────────────┘
